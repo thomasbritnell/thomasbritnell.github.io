@@ -15,16 +15,20 @@
                 var img = document.getElementById("image");
                     if (index < images.length-1){
                         index++;
-                        img.src= filelocation + images[index];
+                        }else{
+                            index=0;
                         };
+                    img.src= filelocation + images[index];
                 return false;
             }
             function prevImage(){
                 var img = document.getElementById("image");
                 if (index > 0){
                         index--;
-                        img.src= filelocation + images[index];
+                        }else{
+                            index = images.length -1;
                         };
+                    img.src= filelocation + images[index];
                 return false;
             }
             
