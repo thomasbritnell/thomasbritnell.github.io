@@ -1,0 +1,92 @@
+body{
+    background-color: #292524;
+    font-family: Helvetica,Arial, sans-serif
+}
+#image {
+    height:auto;
+    width:auto;
+    max-width:580px;
+    max-height:800px;
+}
+a{ 
+    text-decoration: none;
+    color: rgb(190, 136, 100);
+}
+p,img ,h1,h2,h3{
+    margin : 10px;
+}
+
+
+#container { 
+    background-color: white;
+    width: 800px;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+#header{
+    background-color: #66CCFF;
+    color: white;
+    text-align: center;
+    padding:10px;
+}
+#content {
+    padding: 10px; 
+}
+#navigation {
+    background-color: #292524;
+    color:white;
+    padding: 10px 0px;
+    width: 180px;
+    float: left;
+    height:auto;
+}
+    #navigation .selected{
+        font-weight: bold;
+        text-decoration-line: underline;
+    }
+    #navigation ul{
+        list-style-type:none;
+        padding: 10px;
+    }
+    
+.rotateimg180{
+    -webkit-transform: rotate(180deg);
+    -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.centerimg{
+    text-align:center;
+    display:block;
+}
+#main{
+    background-color: rgb(231, 150, 43);
+    color:white;
+    width: 600px;
+    float: right;
+}
+#buttonbar{
+    height:60px;
+    text-align: center;
+}
+.button1{
+    background-color: rgba(255, 255, 255, 0.486);
+    border:none;
+    border-radius:25%;
+}
+#buttonR{
+    float: right;
+}
+#buttonL{
+    float: left;
+}
+#footer{
+    clear: both;
+    padding: 10px;
+    background-color: #636363;
+    color:white;
+    text-align:right;
+}
