@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <meta charset="utf-8&gt;
         &lt;meta name=" viewport"="" content="width=device-width, initial-scale=1">
@@ -32,6 +34,20 @@
                 return false;
             }
             
+        </script>
+        <script>
+        var descriptions = ["tims cup","me"];
+        var index =0;
+            $(document).ready(function(){
+                $("#buttonR").click(function(){
+                    index++;
+                    $("#description").text(descriptions[index]);
+                });
+                $("#buttonL").click(function(){
+                    index--;
+                    $("#description").text(descriptions[index]);
+                });
+            });
         </script>
     </head>
     <body>
