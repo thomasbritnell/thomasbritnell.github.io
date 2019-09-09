@@ -9,42 +9,30 @@
         <title>Thomas Britnell</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
 
+        
+          
         <script>
-            var images = ["boating.jpg","tims.jpg"];
-            var index = 0;
-            var filelocation = "./pictures/";
-            function nextImage(){
-                var img = document.getElementById("image");
+        var descriptions = ["tims cup","me"];
+        var images = ["tims.jpg","boating.jpg"];
+        var index = 0;
+        var filelocation = "./pictures/";
+            $(document).ready(function(){
+                $("#buttonR").click(function(){
                     if (index < images.length-1){
                         index++;
                         }else{
                             index=0;
                         };
-                    img.src= filelocation + images[index];
-                return false;
-            }
-            function prevImage(){
-                var img = document.getElementById("image");
-                if (index > 0){
-                        index--;
-                        }else{
-                            index = images.length -1;
-                        };
-                    img.src= filelocation + images[index];
-                return false;
-            }
-            
-        </script>
-        <script>
-        var descriptions = ["tims cup","me"];
-        var index =0;
-            $(document).ready(function(){
-                $("#buttonR").click(function(){
-                    index++;
+                    $("#image").attr("src",filelocation + images[index]);
                     $("#description").text(descriptions[index]);
                 });
                 $("#buttonL").click(function(){
-                    index--;
+                   if (index > 0){
+                        index--;
+                        }else{
+                            index=images.length-1;
+                        };
+                    $("#image").attr("src",filelocation + images[index]);
                     $("#description").text(descriptions[index]);
                 });
             });
@@ -75,7 +63,7 @@
                     </a>
                     <div id="buttonbar">
                         <button id="buttonR" onclick="nextImage();" class="button1" type="button"> <img src="./pictures/right.png" height="20" width="40">  </button>
-                        <b id="description"> tims cup</b>
+                        <b id="description">tims cup</b>
                         <button id="buttonL" onclick="prevImage();" class="button1" type="button"> <img src="./pictures/right.png" height="20" width="40" class="rotateimg180" ></button>
                     </div>
                     
