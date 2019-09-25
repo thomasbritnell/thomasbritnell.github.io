@@ -8,37 +8,160 @@
         &lt;meta name=" viewport"="" content="width=device-width, initial-scale=1">
         <title>Thomas Britnell</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
+        <script type="text/javascript">
 
+        var pics= new Array();
+        var index= 0;
+
+    function prev(){
         
+        if (index < pics.length-1){
+            index++;
+            console.log(index);
+        }
+            
+ 
+        document.getElementById("canvasimg").src = pics[index];
+    }
+    function next(){
+        
+        if (index >0){
+            index--;
+            console.log(index);
+        }
+            
+ 
+        document.getElementById("canvasimg").src = pics[index];
+    }
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false,
+        drawing =false;
+
+    var x = "black",
+        y = 2;
+    
+    function init() {
+        canvas = document.getElementById('canvas');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+        
+    
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    
+    function color(obj) {
+        switch (obj.id) {
+            case "green":
+                x = "green";
+                break;
+            case "blue":
+                x = "blue";
+                break;
+            case "red":
+                x = "red";
+                break;
+            case "yellow":
+                x = "yellow";
+                break;
+            case "orange":
+                x = "orange";
+                break;
+            case "black":
+                x = "black";
+                break;
+            case "white":
+                x = "white";
+                break;
+        }
+        if (x == "white") y = 14;
+        else y = 2;
+    
+    }
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    function erase() {
+        var m = confirm("Erase?");
+        if (m) {
+            ctx.clearRect(0, 0, w, h);
+            drawing =false;
+        }
+    }
+    
+    function save() {
+        if (drawing){
+            
+            var dataURL = canvas.toDataURL();
+        pics.push(dataURL);
+        document.getElementById("canvasimg").src = pics[pics.length-1];
+        document.getElementById("canvasimg").style.display = "inline";
+        ctx.clearRect(0, 0, w, h);
+        drawing =false;
+        index = pics.length-1;
+        }else{
+            console.log("nothing to save!");
+        }
+        
+    }
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+            drawing =true;
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+    </script>
           
-        <script>
-        var descriptions = ["tims cup"];
-        var images = ["tims.jpg";
-        var index = 0;
-        var filelocation = "./pictures/";
-            $(document).ready(function(){
-                $("#buttonR").click(function(){
-                    if (index < images.length-1){
-                        index++;
-                        }else{
-                            index=0;
-                        };
-                    $("#image").attr("src",filelocation + images[index]);
-                    $("#description").text(descriptions[index]);
-                });
-                $("#buttonL").click(function(){
-                   if (index > 0){
-                        index--;
-                        }else{
-                            index=images.length-1;
-                        };
-                    $("#image").attr("src",filelocation + images[index]);
-                    $("#description").text(descriptions[index]);
-                });
-            });
-        </script>
     </head>
-    <body>
+    <body onload="init()">
         <div id="container">
 
             <div id="header">
@@ -60,8 +183,15 @@
 
                 <div id="main">
                     <h1 id="HomePage">Home Page</h1>
-                    
-                    
+                    <p>Draw me something!</p>
+                    <canvas id="canvas" height="200" width="400" style="border:1px solid #000000;"></canvas>
+                    <input id="save" value="save" type="button" onclick="save()"></input>
+                    <input id="clear" value="clear" type="button" onclick="erase()"></input>
+                    <input id="prev" value="prev" type="button" onclick="prev()"></input>
+                     <input id="next" value="next" type="button" onclick="next()"></input>
+                    <img id="canvasimg" style="border:1px solid #000000;"></img>
+
+
                     
                 </div>
             </div>
