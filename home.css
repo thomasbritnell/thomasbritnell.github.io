@@ -5,25 +5,30 @@ body{
     background-size: cover;
   }
   .box{
-    width: 25%;
+    width: 20%;
     background: rgba(0, 0, 0, 0.4);
-    padding: 40px;
+    padding: 30px;
     text-align: center;
     margin: auto;
     margin-top: 5%;
     color: white;
     font-family: 'Century Gothic',sans-serif;
+    
   }
   .box-img{
     border-radius: 20%;
-    width: 200px;
-    height: 200px;
+    width: 60%;
+    max-width: 200px;
+    max-height: 200px;
   }
   .box-pictures{
     
     max-height: 100%;
     max-width: 100%;
 
+  }
+  #description{
+      text-align: center;
   }
   .box-pictures:hover{
     -webkit-transform: scale(1.2);
@@ -77,6 +82,9 @@ body{
   }
   #buttonL{
     float: left;
+  }
+  #me{
+      width: 100%;
   }
   
   
