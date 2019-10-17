@@ -14,7 +14,12 @@ body{
     margin-top: 5%;
     color: white;
     font-family: 'Century Gothic',sans-serif;
+
     
+  }
+  .scrollbox{
+      max-height: 500px;
+      overflow: auto;
   }
   .box-img{
     border-radius: 20%;
@@ -26,14 +31,15 @@ body{
   }
   .box-pictures{
     
-    max-height: 100%;
+    
     max-width: 100%;
+    min-width: 200px;
 
   }
   #description{
       text-align: center;
   }
-  .box-pictures:hover{
+  #artImg:hover{
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     -o-transform: scale(1.2);
@@ -71,8 +77,11 @@ body{
   .box li a{
     color: white;
     text-decoration: none;
-    font-size: 20px;
+   
     transition: all ease-in-out 250ms;
+  }
+  #navigation{
+      font-size:20px;
   }
   .box li a:hover{
     color: #b9b9b9;
@@ -86,10 +95,8 @@ body{
   #buttonL{
     float: left;
   }
-  #me, #canvas, #canvasimg{
-      width: 100%;
-      min-width: 200px;
+  .caption{
+      font-size: 75%; 
   }
-  
   
   
