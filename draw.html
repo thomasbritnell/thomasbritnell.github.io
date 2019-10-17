@@ -96,6 +96,7 @@
         if (drawing){
             
             var dataURL = canvas.toDataURL();
+            console.log(dataURL);
         pics.push(dataURL);
         document.getElementById("canvasimg").src = pics[pics.length-1];
         document.getElementById("canvasimg").style.display = "inline";
@@ -154,6 +155,7 @@
                 <input id="save" value="save" type="button" onclick="save()"></input>
                 <input id="clear" value="clear" type="button" onclick="erase()"></input>
                 <input id="prev" value="prev" type="button" onclick="prev()"></input>
+                
                     <input id="next" value="next" type="button" onclick="next()"></input>
                     <input id="lineweight" type="range" min="1" max ="25" value = "5" onclick="lineweight(value)"></input>
                 <img id="canvasimg" style="border:1px solid #000000;"></img>
